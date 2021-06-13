@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import { ContinentTable } from './components/ContinentTable';
+import { CountryTable } from './components/CountryTable';
 
+//The app always needs to draw the Continent Table
+//It only draws the Country Table when there is a route to the table 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Continents</h1>
       </header>
+      <ContinentTable />
+
+      <Switch>
+        <Route path="/:code" children={<CountryTable />} />
+      </Switch>
     </div>
   );
 }
